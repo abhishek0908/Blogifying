@@ -17,6 +17,3 @@ jobs:
       
       - name: Install Dependencies
         run: npm install
-        
-      - name: Run Start
-        run: npm start
