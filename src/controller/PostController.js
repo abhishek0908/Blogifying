@@ -5,6 +5,7 @@ const prisma = new PrismaClient()
 const {userMiddleWare} = require('../middleware/userMiddleware')
 
 router.get('/myposts',userMiddleWare,async(req,res)=>{
+    console.log("hello")
     try {
         const user = await prisma.user.findFirstOrThrow({
             where: {
