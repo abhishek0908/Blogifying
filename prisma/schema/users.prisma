@@ -1,0 +1,12 @@
+
+
+model User {
+  uuid       String   @id @default(uuid()) @unique
+  first_name String
+  last_name  String
+  email      String   @unique
+  username   String   @unique
+  password   String
+  posts      Post[]   // A user can have multiple posts
+  @@map("users")
+}

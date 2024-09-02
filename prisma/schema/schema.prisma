@@ -1,0 +1,10 @@
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:Abhi@2024@host.docker.internal:5432/blogify"
+}
+
+generator client {
+  provider = "prisma-client-js"
+    previewFeatures = ["prismaSchemaFolder"]
+
+}

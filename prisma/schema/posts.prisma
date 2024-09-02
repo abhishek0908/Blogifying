@@ -1,0 +1,29 @@
+model Post {
+  uuid        String   @id @default(uuid()) @unique
+  title       String
+  content     String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  author      User     @relation(fields: [authorId], references: [uuid])
+  authorId    String
+  tags        PostTags[]  
+  @@map("posts")
+}
+
+model Tag {
+  id      Int    @id @default(autoincrement()) @unique
+  name    String
+  posts   PostTags[] // Define the relation to PostTags
+  @@map("tags")
+}
+
+model PostTags {
+  id      Int   @id @default(autoincrement()) @unique
+  postId  String
+  tagId   Int
+  post    Post  @relation(fields: [postId], references: [uuid])
+  tag     Tag   @relation(fields: [tagId], references: [id])
+  
+  @@unique([postId, tagId]) // Ensure that each combination of postId and tagId is unique
+  @@map("post_tags")
+}
