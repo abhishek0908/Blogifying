@@ -6,6 +6,7 @@ const {userMiddleWare} = require('../middleware/userMiddleware')
 
 router.get('/myposts',userMiddleWare,async(req,res)=>{
     try {
+        console.log("hello")
         const user = await prisma.user.findFirstOrThrow({
             where: {
                 OR: [
